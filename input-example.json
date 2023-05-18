@@ -1,0 +1,37 @@
+{
+    "action": {
+        "logIfAllowed": true,
+        "logIfDenied": true,
+        "operation": "WRITE",
+        "resourcePattern": {
+            "name": "credit-scores",
+            "patternType": "LITERAL",
+            "resourceType": "TOPIC",
+            "unknown": false
+        },
+        "resourceReferenceCount": 1
+    },
+    "requestContext": {
+        "clientAddress": "/172.22.0.1",
+        "clientInformation": {
+            "softwareName": "apache-kafka-java",
+            "softwareVersion": "2.8.1"
+        },
+        "connectionId": "172.22.0.5:9093-172.22.0.1:62744-2",
+        "header": {
+            "headerVersion": 2,
+            "name": {
+                "clientId": "consumer-console-producer-63933-1",
+                "correlationId": 10,
+                "requestApiKey": 1,
+                "requestApiVersion": 12
+            }
+        },
+        "listenerName": "SSL",
+        "principal": {
+            "name": "CN=anon_producer,OU=Developers",
+            "principalType": "User"
+        },
+        "securityProtocol": "SSL"
+    }
+}
