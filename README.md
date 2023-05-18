@@ -12,6 +12,8 @@ The policies are defined in `policies/tutorial.rego`. If there are any modificat
 opa build --bundle policies/ --output bundles/bundle.tar.gz
 ```
 
+`input-example.json` is an example of the info OPA receives as input from Kafka + OPA Kafka plugin request for a decision.
+
 Spin up the services required for the demo.
 - NGINX - will serve the `bundle.tar.gz` file which holds all of our policies to enforce. This mimics a remote serving, showing that policies can be detached from the enforcer.
 - OPA - will enforce the policies served in the NGINX server
