@@ -7,13 +7,20 @@ This demo recreates the steps defined here: [OPA Kafka Use Case](https://www.ope
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ## Demo
-The policies are defined in `policies/tutorial.rego`. If there are any modifications to the policies files we need to build it again using `opa build`.
+The policies are defined in `policies/tutorial.rego`. If there are any modifications to the policies files we need to build the bundle again using `opa build` in order to serve the latest version.
 ```bash
 opa build --bundle policies/ --output bundles/bundle.tar.gz
 ```
+The current version of `policies/tutorial.rego` is already bundled into `bundles/bundle.tar.gz`
 
-`input-example.json` is an example of the info OPA receives as input from Kafka + OPA Kafka plugin request for a decision.
+The file `input-example.json` is an example of the info OPA receives as input from Kafka + OPA Kafka plugin when a request for a decision is made.  
 
+---
+
+If not yet, create the certificates to mimic different kinds of users accessing the Kafka cluster through SSL.
+```bash
+./create_cert.sh
+```
 Spin up the services required for the demo.
 - NGINX - will serve the `bundle.tar.gz` file which holds all of our policies to enforce. This mimics a remote serving, showing that policies can be detached from the enforcer.
 - OPA - will enforce the policies served in the NGINX server
@@ -21,10 +28,6 @@ Spin up the services required for the demo.
 - ZOOKEEPER - is required to manage KAFKA
 ```bash
 docker compose -p opa-kafka-tutorial up
-```
-If not yet, create the CA certificates to mimic different kinds of users accessing the Kafka cluster.
-```bash
-bash ./create_cert.sh
 ```
 Prepare 3 different bash sessions and run each command sepratelly
 
